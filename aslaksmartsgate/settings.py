@@ -26,7 +26,22 @@ SECRET_KEY = '-dszzt5p#5n=*qzvzym4o8kb2uj8^o=26oooguthy&&l0+fb(*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost:8000', '127.0.0.1:8000', 'aslaksmartsgate.herokuapp.com']
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8080',
+    'localhost:8000',
+    '127.0.0.1:8000',
+    'aslaksmartsgate.herokuapp.com'
+)
+
+CSRF_TRUSTED_ORIGINS = (
+    'localhost:8080',
+    'localhost:8000',
+    'aslaksmartsgate.herokuapp.com'
+)
 
 
 # Application definition
@@ -42,12 +57,14 @@ INSTALLED_APPS = [
     'home',
     'utilities',
     # Third party
-    'rest_framework'
+    'rest_framework',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,3 +146,4 @@ STATICFILES_DIRS = [
 ]
 
 django_heroku.settings(locals())
+

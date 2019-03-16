@@ -20,7 +20,9 @@ export default {
   mounted () {
     axios
       .get(process.env.API_URL + 'electricity')
-      .then(response => (this.info = response))
+      .then(response => (
+        this.electricity = response
+      ))
   }
 }
 </script>
