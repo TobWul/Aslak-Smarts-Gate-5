@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, settings.BASE_DIR + '/vue-cli/dist/index.html')
+    return render(request, settings.BASE_DIR + '/aslaksmartsgateapp/index.html')
