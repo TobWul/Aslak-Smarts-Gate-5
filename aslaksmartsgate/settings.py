@@ -34,7 +34,7 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     'localhost:8000',
     '127.0.0.1:8000',
-    'aslaksmartsgate.herokuapp.com'
+
 )
 
 CSRF_TRUSTED_ORIGINS = (
@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     # Project apps
     'home',
     'utilities',
+    'components',
+    'temperatures',
     # Third party
     'rest_framework',
     'corsheaders'
