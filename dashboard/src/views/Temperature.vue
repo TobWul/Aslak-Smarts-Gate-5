@@ -7,6 +7,9 @@
                     v-if="!loaded"
                     :chartData="chartData"/>
         </div>
+	<div v-for="(temp, index) of temperatures">
+		{{timestamps[index]}}: {{temp}}
+	</div>
     </div>
 </template>
 <script>
@@ -55,8 +58,7 @@
           }
         },
         mounted() {
-            axios
-                .get('http://localhost:8000/api/' + 'inside-temperatures')
+		HTTP.get('inside-temperatures/')
                 .then((response) => (
                     this.convertTemperatures(response.data)
                 ))
