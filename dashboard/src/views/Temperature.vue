@@ -4,9 +4,6 @@
         <div class="card">
             <line-chart :chart-data="datacollection"></line-chart>
         </div>
-	<div v-for="(temp, index) of temperatures">
-		{{timestamps[index]}}: {{temp}}
-	</div>
     </div>
 </template>
 <script>

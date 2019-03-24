@@ -34,13 +34,19 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8080',
     'localhost:8000',
     '127.0.0.1:8000',
+    '192.168.1.27:8080',
+    '192.168.1.27:8000',
+    '192.168.1.149',
 
 )
 
 CSRF_TRUSTED_ORIGINS = (
     'localhost:8080',
     'localhost:8000',
-    'aslaksmartsgate.herokuapp.com'
+    'aslaksmartsgate.herokuapp.com',
+    '192.168.1.27:8080',
+    '192.168.1.27:8000',
+    '192.168.1.149',
 )
 
 
