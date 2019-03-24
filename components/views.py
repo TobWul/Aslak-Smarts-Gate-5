@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 from components.models import Component
 from components.serializers import ComponentSerializer
+from ikeacontroller.IkeaController import IkeaController
 
 
 @api_view(['GET', 'POST'])
@@ -25,6 +26,14 @@ def component_list(request, format=None):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+def control_ikea_component(data):
+    ikea = IkeaController()
+    ikea_id = data['ikea_id']
+    if data['type'] == 'socket':
+        ikea.toggle_socket(ikea_id, data['state'])
+    else:
+        ikea.toggle_light(ikea_id, data['state'])
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -45,6 +54,7 @@ def component_detail(request, pk, format=None):
         serializer = ComponentSerializer(component, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
+            control_ikea_component(serializer.data)
             return Response(serializer.data)
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
