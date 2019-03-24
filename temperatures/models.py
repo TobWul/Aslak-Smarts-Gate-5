@@ -6,4 +6,4 @@ class InsideTemperature(models.Model):
     temperature = models.FloatField()
 
     def __str__(self):
-        return self.temperature
+        return str(self.temperature)
