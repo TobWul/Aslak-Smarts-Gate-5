@@ -43,6 +43,10 @@ class IkeaController:
         devices_commands = self.api(devices_command)
         self.devices = self.api(devices_commands)
 
+    def list_all_components(self):
+        print(self.devices)
+        return self.devices
+
     def get_component(self, component_id):
         try:
             return [dev for dev in self.devices if dev.id == component_id][0]
