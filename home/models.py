@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+
+class Sauna(models.Model):
+    last_chair_person = models.IntegerField(default=0)

@@ -1,28 +1,25 @@
 <template>
     <div id="temperature">
         <h1>Temperaturer</h1>
-        <button @click="sendTemp()">Send temperatur</button>
         <div class="card">
-            <temperature-chart
-                    v-if="!loaded"
-                    :chartData="chartData"/>
+            <line-chart :chart-data="datacollection"></line-chart>
         </div>
     </div>
 </template>
 <script>
-    import TemperatureChart from "../components/TemperatureChart";
+    import LineChart from "../components/LineChart";
     import axios from 'axios'
     import {HTTP} from "@/assets/js/http-common";
 
     export default {
         name: 'temperature',
-        components: {TemperatureChart},
+        components: {LineChart},
         data() {
             return {
                 temperatures: [],
                 timestamps: [],
                 loaded: false,
-                chartData: {
+                datacollection: {
                     labels: this.timestamps,
                     datasets: [
                         {
@@ -35,21 +32,26 @@
             }
         },
         methods: {
-            sendTemp: function() {
-                HTTP.post('inside-temperatures/', {
-                    timestamp: "2019-03-17T15:58:50Z",
-                    temperature: 22.1
-                })
-                .then(response => {})
-                .catch(e => {
-                    console.log(e);
-                })
+            setDatacollection: function() {
+                this.datacollection = {
+                    labels: this.timestamps,
+                        datasets: [
+                        {
+                            label: 'Temperature',
+                            backgroundColor: 'rgba(0,0,0,0)',
+                            borderColor: 'rgba(255,255,255,0.6)',
+                            data: this.temperatures
+                        }
+                    ]
+                }
             },
           convertTemperatures: function(temperatures) {
               for (let i = 0; i < temperatures.length; i++) {
                   let time = new Date(temperatures[i].timestamp)
                   this.timestamps.push(`${time.getHours()}:${time.getMinutes()}`);
                   this.temperatures.push(temperatures[i].temperature);
+                  this.setDatacollection();
+
               }
               console.log(this.timestamps, this.temperatures)
           }

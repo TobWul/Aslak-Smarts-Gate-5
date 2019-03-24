@@ -20,5 +20,6 @@ from .routers import router
 urlpatterns = [
     path('', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/', include('components.urls'))
+    path('api/', include('components.urls')),
+    path('api/', include('home.urls'))
 ]

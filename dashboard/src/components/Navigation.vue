@@ -2,6 +2,7 @@
     <nav>
         <router-link to="/"><img src="@/assets/icons/Home.svg" alt="Home">Oversikt</router-link>
         <router-link to="/electricity"><img src="@/assets/icons/Electricity.svg" alt="Electricity">Straum</router-link>
+        <router-link to="/sauna"><img src="@/assets/icons/Electricity.svg" alt="Sauna">Badstuo</router-link>
         <router-link to="/temperature"><img src="@/assets/icons/Analytics.svg" alt="Temperatur">Temperatur</router-link>
         <router-link to="/settings"><img src="@/assets/icons/Settings.svg" alt="Settings">Innstillinger</router-link>
     </nav>
