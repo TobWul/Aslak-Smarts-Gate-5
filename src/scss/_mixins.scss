@@ -1,0 +1,189 @@
+@function least-squares-fit($map) {
+
+    // Get the number of provided breakpoints
+    $length: length(map-keys($map));
+
+    // Error if the number of breakpoints is < 2
+    @if ($length < 2) {
+        @error "leastSquaresFit() $map must be at least 2 values"
+    }
+
+    // Calculate the Means
+    $resTotal: 0;
+    $valueTotal: 0;
+
+    @each $res,
+    $value in $map {
+        $resTotal: $resTotal + $res;
+        $valueTotal: $valueTotal + $value;
+    }
+
+    $resMean: $resTotal/$length;
+    $valueMean: $valueTotal/$length;
+
+    // Calculate some other stuff
+    $multipliedDiff: 0;
+    $squaredDiff: 0;
+
+    @each $res,
+    $value in $map {
+
+        // Differences from means
+        $resDiff: $res - $resMean;
+        $valueDiff: $value - $valueMean;
+
+        // Sum of multiplied differences
+        $multipliedDiff: $multipliedDiff + ($resDiff * $valueDiff);
+
+        // Sum of squared resolution differences
+        $squaredDiff: $squaredDiff + ($resDiff * $resDiff);
+    }
+
+    // Calculate the Slope
+    $m: $multipliedDiff / $squaredDiff;
+
+    // Calculate the Y-Intercept
+    $b: $valueMean - ($m * $resMean);
+
+    // Return the CSS calc equation
+    @return calc(#{$m*100}vw + #{$b}px);
+
+}
+
+@mixin css-reset {
+
+    *,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+    }
+
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+    /* HTML5 display-role reset for older browsers */
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+        display: block;
+    }
+
+    body {
+        line-height: 1;
+    }
+
+    ul, ol {
+        li {
+            line-height: 1.6em;
+        }
+    }
+
+    blockquote,
+    q {
+        quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+        content: '';
+        content: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+}
