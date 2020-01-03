@@ -1,14 +1,15 @@
 import React from 'react';
-import Button from './components/Button/Button';
-import LightPanel from './components/lights/LightPanel';
-import Outlet from './components/outlets/Outlet';
+import LightPanel from './components/light/LightPanel';
+import Oven from './components/Oven';
+import Temperature from './components/Temperature';
 import styles from './App.module.scss';
 
 function App() {
   return (
     <main className={styles.app}>
+      <Temperature />
+      <Oven />
       <LightPanel />
-      <Outlet />
     </main>
   );
 }

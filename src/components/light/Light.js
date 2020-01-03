@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import Button from '../Button/Button';
+import Button from '../ui/Button';
 import db from '../../db/firebase';
-import { toggleLight } from '../../db/controlLights';
 import useIkeaComponent from '../../hooks/useIkeaComponent';
+import Icon from '../ui/Icon';
+import Dimmer from './Dimmer';
+import ButtonWrapper from '../ui/ButtonWrapper';
 
 const Light = ({ light }) => {
   const lightRef = db.collection('lights').doc(light.id);
   const [on, toggle] = useIkeaComponent(lightRef);
 
   return (
-    <Button on={on} onClick={toggle}>
-      {light.id}
-    </Button>
+    <ButtonWrapper>
+      <Button on={on} onClick={toggle}>
+        <Icon symbol="light" on={on} />
+      </Button>
+      <Dimmer />
+    </ButtonWrapper>
   );
 };
 

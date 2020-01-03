@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Bai+Jamjuree:300,400,700&display=swap');
+
 html {
     font-size: var(--root-font-size);
+    font-family: 'Bai Jamjuree', 'Courier New', Courier, monospace;
+    font-weight: normal;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: normal;
+    text-shadow: var(--text-shadow-up);
 }

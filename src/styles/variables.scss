@@ -1,5 +1,11 @@
 :root {
-    --background-color: #EBF3FA;
+    --background-color: #1B3041;
     --root-font-size: 100%;
     --main-border-radius: 16px;
+
+    --text-color: #B6C6D4;
+
+    --shadow-up: 4px 2px 16px rgba(0, 0, 0, 0.68), -4px -2px 16px rgba(48, 83, 113, 0.91);
+    --shadow-down: inset 3px 3px 7px rgba(0, 0, 0, 0.44), inset -3px -3px 7px rgba(53, 84, 111, 0.7);
+    --text-shadow-up: 4px 2px 16px rgba(0, 0, 0, 0.98), -4px -2px 16px rgba(48, 83, 113, 0.91);
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import db from '../../db/firebase';
 import { getLights } from '../../db/controlLights';
 import Light from './Light';
 

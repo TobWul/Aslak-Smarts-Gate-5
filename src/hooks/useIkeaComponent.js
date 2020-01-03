@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import db from '../db/firebase';
 
 const useIkeaComponent = componentRef => {
   const [on, setOn] = useState(false);
