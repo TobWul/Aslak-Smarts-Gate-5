@@ -6,7 +6,7 @@ const Temperature = () => {
 
   useEffect(() => {
     db.collection('settings')
-      .doc('currentTemp')
+      .doc('ovenSettings')
       .onSnapshot(doc =>
         setTemperature(Math.round(doc.data().currentTemp * 10) / 10)
       );
