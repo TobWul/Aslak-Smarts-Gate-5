@@ -12,21 +12,6 @@ const toggleLight = (lightId, newState) => {
     .catch(error => console.error(error));
 };
 
-const getLightState = identifier => {
-  let result = false;
-  db.collection('lights')
-    .doc(identifier)
-    .get()
-    .then(doc => {
-      if (doc.exists) {
-        result = doc.data();
-      } else {
-        // doc.data() will be undefined in this case
-        console.log('No such document!');
-      }
-    });
-};
-
 const getLights = new Promise((resolve, reject) => {
   lightRef
     .get()
@@ -41,4 +26,4 @@ const getLights = new Promise((resolve, reject) => {
     .catch(error => reject(error));
 });
 
-export { toggleLight, getLightState, getLights };
+export { toggleLight, getLights };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Button from '../ui/Button';
 import db from '../../db/firebase';
 import useIkeaComponent from '../../hooks/useIkeaComponent';
@@ -15,7 +15,7 @@ const Light = ({ light }) => {
       <Button on={on} onClick={toggle}>
         <Icon symbol="light" on={on} />
       </Button>
-      <Dimmer />
+      <Dimmer min={10} max={100} step={10} lightInstanceId={`${light.id}`} />
     </ButtonWrapper>
   );
 };

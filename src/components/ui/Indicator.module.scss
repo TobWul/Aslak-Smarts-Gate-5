@@ -1,0 +1,27 @@
+$light-size: 8px;
+
+.light {
+    position: relative;
+    width: $light-size;
+    height: $light-size;
+    border-radius: 50%;
+    box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.44), inset -3px -3px 7px rgba(53, 84, 111, 0.7);
+    background: #1B3041;
+
+    &::after {
+        content: '';
+        border-radius: 50%;
+        z-index: -1;
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        background: linear-gradient(123.34deg, #445B6F 24.46%, #24323E 95.7%);
+        width: calc(100% + 2px);
+        height: calc(100% + 2px);
+    }
+
+    &.on {
+        background: linear-gradient(135deg, #F8F0C4 27.43%, #E2C73D 100%);
+        box-shadow: 0px 0px 5px #E7D46F;
+    }
+}
