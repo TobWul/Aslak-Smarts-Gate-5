@@ -4,6 +4,12 @@ secret.js
 # Created by https://www.gitignore.io/api/vue,node,vuejs,linux,macos,windows,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=vue,node,vuejs,linux,macos,windows,visualstudiocode
 
+build/
+/build
+
+public/
+/public
+
 # Node modules
 node_modules/
 /node_modules
