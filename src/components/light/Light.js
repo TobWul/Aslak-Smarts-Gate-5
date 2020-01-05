@@ -8,7 +8,7 @@ import ButtonWrapper from '../ui/ButtonWrapper';
 
 const Light = ({ light }) => {
   const lightRef = db.collection('lights').doc(light.id);
-  const [on, toggle] = useIkeaComponent(lightRef);
+  const { on, toggle, brightness, setBrightness } = useIkeaComponent(lightRef);
 
   return (
     <ButtonWrapper>
@@ -16,7 +16,8 @@ const Light = ({ light }) => {
         <Icon symbol="light" on={on} />
       </Button>
       <Dimmer
-        brightness={light.brightness}
+        brightness={brightness}
+        setBrightness={setBrightness}
         min={10}
         max={100}
         step={10}

@@ -6,7 +6,9 @@ import Icon from './ui/Icon';
 import ButtonWrapper from './ui/ButtonWrapper';
 
 const Oven = () => {
-  const [on, toggle] = useIkeaComponent(db.collection('outlets').doc('65539'));
+  const { on, toggle } = useIkeaComponent(
+    db.collection('outlets').doc('65539')
+  );
 
   return (
     <ButtonWrapper>

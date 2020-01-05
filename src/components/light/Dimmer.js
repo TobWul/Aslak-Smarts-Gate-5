@@ -5,8 +5,14 @@ import { debounce } from '../../lib/helpers';
 import db from '../../db/firebase';
 import Indicator from '../ui/Indicator';
 
-const Dimmer = ({ brightness, min, max, step, lightInstanceId }) => {
-  const [value, setValue] = useState(brightness);
+const Dimmer = ({
+  brightness,
+  setBrightness,
+  min,
+  max,
+  step,
+  lightInstanceId
+}) => {
   const lights = [];
   const delayedQuery = useRef(
     debounce(brightness => {
@@ -17,7 +23,7 @@ const Dimmer = ({ brightness, min, max, step, lightInstanceId }) => {
   ).current;
 
   const changeHandler = e => {
-    setValue(e.target.value);
+    setBrightness(e.target.value);
     delayedQuery((e.target.value / max) * 100);
   };
 
@@ -33,7 +39,7 @@ const Dimmer = ({ brightness, min, max, step, lightInstanceId }) => {
     <div className={styles.dimmerContainer}>
       <div className={styles.lights}>
         {[...Array(max / step)].map((light, index) => (
-          <Indicator on={index < value / step} key={index} />
+          <Indicator on={index < brightness / step} key={index} />
         ))}
       </div>
       <input
@@ -41,7 +47,7 @@ const Dimmer = ({ brightness, min, max, step, lightInstanceId }) => {
         min={min}
         max={max}
         step={step}
-        value={value}
+        value={brightness}
         className={styles.dimmer}
         onChange={changeHandler}
       />
