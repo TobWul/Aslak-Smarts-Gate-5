@@ -5,8 +5,8 @@ import { debounce } from '../../lib/helpers';
 import db from '../../db/firebase';
 import Indicator from '../ui/Indicator';
 
-const Dimmer = ({ min, max, step, lightInstanceId }) => {
-  const [value, setValue] = useState(min);
+const Dimmer = ({ brightness, min, max, step, lightInstanceId }) => {
+  const [value, setValue] = useState(brightness);
   const lights = [];
   const delayedQuery = useRef(
     debounce(brightness => {
@@ -53,6 +53,7 @@ Dimmer.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,
+  brightness: PropTypes.number.isRequired,
   lightInstanceId: PropTypes.string.isRequired
 };
 

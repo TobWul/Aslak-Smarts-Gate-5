@@ -15,7 +15,13 @@ const Light = ({ light }) => {
       <Button on={on} onClick={toggle}>
         <Icon symbol="light" on={on} />
       </Button>
-      <Dimmer min={10} max={100} step={10} lightInstanceId={`${light.id}`} />
+      <Dimmer
+        brightness={light.brightness}
+        min={10}
+        max={100}
+        step={10}
+        lightInstanceId={`${light.id}`}
+      />
     </ButtonWrapper>
   );
 };
