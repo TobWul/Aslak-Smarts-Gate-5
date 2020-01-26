@@ -71,3 +71,15 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 Username: pi
 Password: 123
+
+2. Starting a new Screen.
+  $screen bash
+3. Detached a terminal session.
+  CTRL + A  release, and then press D
+4. List all terminal session
+  $ screen -list
+5. Reconnect screen 
+  $ screen -r
+  $ screen -r 1245.pts-0.raspberrypi (if more screens)
+6. Termination screen.
+  $ CTRL +D
